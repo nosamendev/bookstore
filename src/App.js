@@ -1,26 +1,59 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { authCheckState } from './store/actions/auth';
+import Layout from './Layout/Layout';
+import Cart from './Layout/Cart/Cart';
+import About from './Layout/About/About';
+import Auth from './Layout/Auth/Auth';
+import Books from './Layout/Books/Books';
+import MyOrders from './Layout/MyOrders/MyOrders';
+import Manage from './Layout/Manage/Manage';
+import Logout from './Layout/Auth/Logout';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+const App = (props) => {
+  useEffect(() => {
+    props.authCheckState();
+  }, []);
+
+  let routes = (
+    //not authenticated:
+    <Switch>
+      <Route path="/cart" exact component={Cart} />
+      <Route path="/" exact component={Books} />
+      <Route path="/about" exact component={About} />
+      <Route path="/auth" exact component={Auth} />
+      <Redirect to="/" />
+      <Route render={() => <h1>(404) This file cannot be found</h1>} />
+    </Switch>
   );
-}
 
-export default App;
+  if (props.isAuthenticated) {
+    routes = (
+      <Switch>
+        <Route path="/cart" exact component={Cart} />
+        <Route path="/" exact component={Books} />
+        <Route path="/about" exact component={About} />
+        <Route path="/manage" exact component={Manage} />
+        <Route path="/myorders" exact component={MyOrders} />
+        <Route path="/logout" exact component={Logout} />
+        <Route path="/auth" exact component={Auth} />
+        <Route render={() => <h1>(404) This file cannot be found</h1>} />
+      </Switch>
+    );
+  }
+
+  return (
+    <BrowserRouter>
+      <Layout>{routes}</Layout>
+    </BrowserRouter>
+  );
+};
+
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.authReducer.token !== null,
+  };
+};
+
+export default connect(mapStateToProps, { authCheckState })(App);

@@ -1,0 +1,32 @@
+import {
+  FETCH_BOOKS,
+  FETCH_BOOKS_START,
+  FETCH_BOOKS_FAILED
+} from '../actions/types';
+
+const INITIAL_STATE = {
+  error: false,
+  loading: false,
+  description: ''
+};
+
+const booksReducer = (state = INITIAL_STATE, action) => {
+  switch (action.type) {
+    case FETCH_BOOKS:
+      return { ...state, ...action.payload, loading: false };
+    case FETCH_BOOKS_START:
+      return { ...state, loading: true };
+    case FETCH_BOOKS_FAILED:
+      return {
+        ...state,
+        loading: false,
+        description: action.payload,
+        error: true
+      };
+
+    default:
+      return state;
+  }
+};
+
+export default booksReducer;
