@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import Book from './Book/Book';
 import { connect } from 'react-redux';
 import { fetchBooks } from '../../store/actions';
+import Loader from '../Loader/Loader';
+import displayCategory from '../DisplayCategory/DisplayCategory';
 import './Books.css';
 
 const Books = (props) => {
@@ -40,6 +42,7 @@ const Books = (props) => {
             author={kidsBooks[i].author}
             price={kidsBooks[i].price}
             image={kidsBooks[i].image}
+            showEdit={false}
           />
         );
       });
@@ -53,6 +56,7 @@ const Books = (props) => {
             author={romanceBooks[i].author}
             price={romanceBooks[i].price}
             image={romanceBooks[i].image}
+            showEdit={false}
           />
         );
       });
@@ -66,6 +70,7 @@ const Books = (props) => {
             author={thrillerBooks[i].author}
             price={thrillerBooks[i].price}
             image={thrillerBooks[i].image}
+            showEdit={false}
           />
         );
       });
@@ -83,6 +88,18 @@ const Books = (props) => {
     }
   };
 
+  if (props.error) {
+    return <p className="error">ERROR: {props.errorDescription}</p>;
+  }
+
+  if (props.loading) {
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
+  }
+
   return <React.Fragment>{displayCategory()}</React.Fragment>;
 };
 
@@ -90,6 +107,8 @@ const mapStateToProps = (state) => {
   return {
     books: state.booksReducer.books,
     errorDescription: state.booksReducer.description.message,
+    error: state.booksReducer.error,
+    loading: state.booksReducer.loading,
   };
 };
 

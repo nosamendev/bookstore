@@ -1,3 +1,4 @@
 .category-container {
   display: flex;
+  display: -webkit-flex;
 }

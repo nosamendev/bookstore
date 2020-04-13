@@ -27,7 +27,7 @@ const Auth = (props) => {
   };
 
   const switchLoginRegister = (e) => {
-    if (e.target == loginRef.current) {
+    if (e.target === loginRef.current) {
       setIsSignUp(false);
       loginRef.current.classList.add('active');
       registerRef.current.classList.remove('active');

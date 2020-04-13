@@ -10,6 +10,9 @@ import Books from './Layout/Books/Books';
 import MyOrders from './Layout/MyOrders/MyOrders';
 import Manage from './Layout/Manage/Manage';
 import Logout from './Layout/Auth/Logout';
+import BookDetails from './Layout/Books/BookDetails/BookDetails';
+import Edit from './Layout/Edit/Edit';
+import Delete from './Layout/Delete/Delete';
 
 const App = (props) => {
   useEffect(() => {
@@ -22,8 +25,9 @@ const App = (props) => {
       <Route path="/cart" exact component={Cart} />
       <Route path="/" exact component={Books} />
       <Route path="/about" exact component={About} />
+      <Route path="/books/:id" exact component={BookDetails} />
       <Route path="/auth" exact component={Auth} />
-      <Redirect to="/" />
+
       <Route render={() => <h1>(404) This file cannot be found</h1>} />
     </Switch>
   );
@@ -34,8 +38,11 @@ const App = (props) => {
         <Route path="/cart" exact component={Cart} />
         <Route path="/" exact component={Books} />
         <Route path="/about" exact component={About} />
+        <Route path="/books/:id" exact component={BookDetails} />
         <Route path="/manage" exact component={Manage} />
         <Route path="/myorders" exact component={MyOrders} />
+        <Route path="/edit" exact component={Edit} />
+        <Route path="delete" exact component={Delete} />
         <Route path="/logout" exact component={Logout} />
         <Route path="/auth" exact component={Auth} />
         <Route render={() => <h1>(404) This file cannot be found</h1>} />

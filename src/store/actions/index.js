@@ -1,5 +1,7 @@
 export { fetchBooks, fetchBooksFailed } from './fetchBooks.js';
 
+export { fetchBook, fetchBookFailed } from './fetchBook.js';
+
 export {
   authSuccess,
   authFailed,

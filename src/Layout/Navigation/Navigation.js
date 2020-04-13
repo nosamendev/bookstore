@@ -6,6 +6,7 @@ import './Navigation.css';
 const Navigation = (props) => {
   return (
     <nav>
+      <div className="user-email">Welcome {localStorage.email}</div>
       <ul>
         <li>
           <NavLink exact to="/">
@@ -38,7 +39,6 @@ const Navigation = (props) => {
         ) : (
           <>
             <li>
-              <span className="user-email">{localStorage.email}</span>
               <NavLink exact to="/logout">
                 LOGOUT
               </NavLink>

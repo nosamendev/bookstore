@@ -74,6 +74,15 @@ main {
   padding: 0 20px;
 }
 
+h1 {
+  font-weight: bold;
+  font-size: 125%;
+  clear: both;
+  border-bottom: 2px dotted #acacac;
+  margin: 20px 0;
+  text-align: left;
+}
+
 h3 {
   font-weight: normal;
   font-size: 125%;
@@ -81,4 +90,33 @@ h3 {
   border-bottom: 2px dotted #acacac;
   margin: 20px 0;
   text-align: left;
+}
+
+.button,
+button {
+  border: 0;
+  margin: 0;
+  padding: 5px 20px;
+  background-color: #8ab83e;
+  color: #fff;
+  font-size: 130%;
+  border-radius: 20px;
+  display: inline-block;
+  transition: background-color 0.3s ease 0s;
+  -webkit-transition: background-color 0.3s ease 0s;
+  cursor: pointer;
+}
+
+.button:hover,
+button:hover {
+  background-color: #6d9131;
+}
+
+.info-text {
+  text-align: left;
+  font-size: 125%;
+}
+
+.error {
+  color: red;
 }
