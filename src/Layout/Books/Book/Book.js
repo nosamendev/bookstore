@@ -20,7 +20,7 @@ const Book = (props) => {
   if (props.showEdit) {
     buttons = (
       <div className="actions">
-        <Link to="/edit" className="edit" title="Edit"></Link>
+        <Link to={`/edit/${props.id}`} className="edit" title="Edit"></Link>
         <Link to="/delete" className="delete" title="Delete"></Link>
       </div>
     );

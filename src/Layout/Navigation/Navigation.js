@@ -4,9 +4,14 @@ import { connect } from 'react-redux';
 import './Navigation.css';
 
 const Navigation = (props) => {
+  let welcome;
+  if (localStorage.email) {
+    welcome = <div className="user-email">Welcome {localStorage.email}</div>;
+  }
+
   return (
     <nav>
-      <div className="user-email">Welcome {localStorage.email}</div>
+      {welcome}
       <ul>
         <li>
           <NavLink exact to="/">

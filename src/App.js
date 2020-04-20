@@ -11,7 +11,7 @@ import MyOrders from './Layout/MyOrders/MyOrders';
 import Manage from './Layout/Manage/Manage';
 import Logout from './Layout/Auth/Logout';
 import BookDetails from './Layout/Books/BookDetails/BookDetails';
-import Edit from './Layout/Edit/Edit';
+import EditBook from './Layout/EditBook/EditBook';
 import Delete from './Layout/Delete/Delete';
 
 const App = (props) => {
@@ -41,7 +41,7 @@ const App = (props) => {
         <Route path="/books/:id" exact component={BookDetails} />
         <Route path="/manage" exact component={Manage} />
         <Route path="/myorders" exact component={MyOrders} />
-        <Route path="/edit" exact component={Edit} />
+        <Route path="/edit/:id" exact component={EditBook} />
         <Route path="delete" exact component={Delete} />
         <Route path="/logout" exact component={Logout} />
         <Route path="/auth" exact component={Auth} />

@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import Book from '../Books/Book/Book';
 
 const DisplayCategory = (props) => {
   if (props.books) {
@@ -74,6 +76,8 @@ const DisplayCategory = (props) => {
         <div className="category-container">{thrillerCategory}</div>
       </div>
     );
+  } else {
+    return null;
   }
 };
 

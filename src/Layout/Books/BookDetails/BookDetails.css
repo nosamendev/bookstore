@@ -44,8 +44,13 @@
   padding-right: 50px;
 }
 
-.book-details .book-info table .price {
+.book-details .book-info table .price,
+.book-details .book-info table .price input {
   color: #3476ba;
+}
+
+.book-details .book-info table .price input {
+  width: 290px;
 }
 
 .book-details .book-info table .category td,

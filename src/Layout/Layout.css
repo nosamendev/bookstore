@@ -43,7 +43,8 @@ footer {
 table,
 input,
 button,
-textarea {
+textarea,
+select {
   font-family: inherit;
   font-size: 100%;
   box-sizing: border-box;
@@ -119,4 +120,35 @@ button:hover {
 
 .error {
   color: red;
+}
+
+input[type='email'],
+input[type='password'],
+input[type='text'],
+input[type='number'],
+select {
+  width: 300px;
+  background-color: #fff;
+  border: 1px solid #b9bdbf;
+  height: 35px;
+  padding: 5px;
+}
+
+input:focus,
+textarea:focus {
+  box-shadow: 0 0 10px 0 rgba(113, 113, 113, 0.4);
+}
+
+textarea {
+  width: 300px;
+  background-color: #fff;
+  border: 1px solid #b9bdbf;
+  height: 100px;
+  padding: 5px;
+}
+
+.button-container {
+  border-top: 2px dotted #b9bdbf;
+  margin-top: 20px;
+  padding-top: 20px;
 }

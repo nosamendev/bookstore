@@ -11,7 +11,7 @@ export const fetchBook = (id) => async (dispatch) => {
 
   try {
     const response = await books.get(`/store/books/${id}.json`);
-    dispatch({ type: FETCH_BOOK, payload: response.data });
+    dispatch({ type: FETCH_BOOK, payload: response.data, id: id });
   } catch (error) {
     dispatch({ type: FETCH_BOOK_FAILED, payload: error });
   }

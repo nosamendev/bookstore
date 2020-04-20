@@ -2,6 +2,8 @@ export { fetchBooks, fetchBooksFailed } from './fetchBooks.js';
 
 export { fetchBook, fetchBookFailed } from './fetchBook.js';
 
+export { editBook, editBookFailed } from './editBook.js';
+
 export {
   authSuccess,
   authFailed,

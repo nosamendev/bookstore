@@ -6,6 +6,10 @@ export const FETCH_BOOK_START = 'FETCH_BOOK_START';
 export const FETCH_BOOK = 'FETCH_BOOK';
 export const FETCH_BOOK_FAILED = 'FETCH_BOOK_FAILED';
 
+export const EDIT_BOOK_START = 'EDIT_BOOK_START';
+export const EDIT_BOOK = 'EDIT_BOOK';
+export const EDIT_BOOK_FAILED = 'EDIT_BOOK_FAILED';
+
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const AUTH_FAILED = 'AUTH_FAILED';
 export const AUTH_LOGOUT = 'AUTH_LOGOUT';

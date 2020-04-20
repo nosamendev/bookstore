@@ -6,7 +6,7 @@ const About = () => {
       <h1>About</h1>
       <p>This is a demo React Redux Project.</p>
       <p>
-        ou could Register using your own email (doesn't have to be valid), or
+        You could Register using your own email (doesn't have to be valid), or
         use test@test.com/123456 to Login.
       </p>
       <p>

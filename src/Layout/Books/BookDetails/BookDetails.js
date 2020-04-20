@@ -58,7 +58,7 @@ const BookDetails = (props) => {
 
   if (props.loading) {
     return (
-      <div className="item">
+      <div>
         <Loader />
       </div>
     );
@@ -125,7 +125,7 @@ const mapStateToProps = (state) => {
   return {
     books: state.booksReducer.books,
     book: state.bookReducer,
-    loading: state.cakesReducer.loading,
+    loading: state.booksReducer.loading,
   };
 };
 
