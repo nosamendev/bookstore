@@ -7,6 +7,7 @@ export const editBook = (id, formValues) => async (dispatch) => {
 
   try {
     const response = await books.patch(`/store/books/${id}.json`, formValues);
+
     dispatch({ type: EDIT_BOOK, payload: response.data, id: id });
   } catch (error) {
     dispatch({ type: EDIT_BOOK_FAILED, payload: error });

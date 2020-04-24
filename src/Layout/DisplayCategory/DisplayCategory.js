@@ -8,6 +8,7 @@ const DisplayCategory = (props) => {
     let romanceBooks = [];
     let thrillerBooks = [];
 
+    //get the books in each category:
     for (let i = 0; i < props.books.length; i++) {
       switch (props.books[i].category) {
         case 'Kids': {

@@ -1,8 +1,4 @@
-import {
-  FETCH_BOOK,
-  FETCH_BOOK_START,
-  FETCH_BOOK_FAILED,
-} from '../actions/types';
+import { ADD_BOOK, ADD_BOOK_START, ADD_BOOK_FAILED } from '../actions/types';
 
 const INITIAL_STATE = {
   error: false,
@@ -10,17 +6,13 @@ const INITIAL_STATE = {
   description: '',
 };
 
-const bookReducer = (state = INITIAL_STATE, action) => {
+const addReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case FETCH_BOOK:
-      const book = Object.values(action.payload);
-      const id = Object.keys(action.payload);
-      book.id = id;
-
+    case ADD_BOOK:
       return { ...state, ...action.payload, loading: false };
-    case FETCH_BOOK_START:
+    case ADD_BOOK_START:
       return { ...state, loading: true };
-    case FETCH_BOOK_FAILED:
+    case ADD_BOOK_FAILED:
       return {
         ...state,
         loading: false,
@@ -33,4 +25,4 @@ const bookReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default bookReducer;
+export default addReducer;

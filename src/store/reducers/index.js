@@ -4,6 +4,7 @@ import bookReducer from './bookReducer';
 import authReducer from './authReducer';
 import cartStatusReducer from './cartStatusReducer';
 import editReducer from './editReducer';
+import addReducer from './addReducer';
 
 export default combineReducers({
   booksReducer: booksReducer,
@@ -11,4 +12,5 @@ export default combineReducers({
   authReducer: authReducer,
   cartStatusReducer: cartStatusReducer,
   editReducer: editReducer,
+  addReducer: addReducer,
 });

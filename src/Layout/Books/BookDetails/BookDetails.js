@@ -32,6 +32,7 @@ const BookDetails = (props) => {
     while (index < props.books.length && id != props.books[index].id) {
       index++;
     }
+
     title = props.books[index].title;
     author = props.books[index].author;
     image = props.books[index].image;

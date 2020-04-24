@@ -1,38 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { fetchBook } from '../../store/actions/fetchBook';
-import { editBook } from '../../store/actions/editBook';
+import { addBook } from '../../store/actions/addBook';
 import Loader from '../Loader/Loader';
 import BookForm from '../BookForm/BookForm';
 
-const EditBook = (props) => {
-  useEffect(() => {
-    props.fetchBook(id);
-  }, []);
-
-  useEffect(() => {
-    if (props.book.title) {
-      setTitle(props.book.title);
-      setAuthor(props.book.author);
-      setYear(props.book.year);
-      setCategory(props.book.category);
-      setSummary(props.book.summary);
-      setBookID(props.book.bookID);
-      setPrice(props.book.price);
-      setImage(props.book.image);
-    }
-  }, [props.book.title]);
-
-  const id = props.location.pathname.slice(6);
-
+const AddBook = (props) => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [year, setYear] = useState('');
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState('Kids');
   const [bookID, setBookID] = useState('');
   const [summary, setSummary] = useState('');
   const [price, setPrice] = useState('');
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState('noimage.jpg');
 
   const [submitted, setSubmitted] = useState(false);
 
@@ -66,17 +46,10 @@ const EditBook = (props) => {
     }
   };
 
-  const images = require.context('../../images', true);
-  let img = '';
-  if (image) {
-    img = images('./' + image);
-  }
-
   const formValues = {
     author: author,
     bookID: bookID,
     category: category,
-    id: id,
     image: image,
     price: price,
     summary: summary,
@@ -86,7 +59,13 @@ const EditBook = (props) => {
 
   const formSubmit = (e) => {
     e.preventDefault();
-    props.editBook(id, formValues);
+
+    const book = {
+      admin: localStorage.email,
+      ...formValues,
+      userId: localStorage.userId,
+    };
+    props.addBook(book);
     setSubmitted(true);
   };
 
@@ -107,14 +86,13 @@ const EditBook = (props) => {
       author={author}
       bookID={bookID}
       category={category}
-      id={id}
-      image={image}
+      image={'noimage.jpg'}
       price={price}
       summary={summary}
       title={title}
       year={year}
       submitted={submitted}
-      img={img}
+      img={'../../images/noimage.jpg'}
       formSubmit={formSubmit}
       changeInput={changeInput}
     />
@@ -123,11 +101,11 @@ const EditBook = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    book: state.bookReducer,
-    loading: state.bookReducer.loading,
-    error: state.bookReducer.error,
-    errorDescription: state.bookReducer.description.message,
+    books: state.booksReducer,
+    loading: state.addReducer.loading,
+    error: state.addReducer.error,
+    errorDescription: state.addReducer.description.message,
   };
 };
 
-export default connect(mapStateToProps, { fetchBook, editBook })(EditBook);
+export default connect(mapStateToProps, { addBook })(AddBook);

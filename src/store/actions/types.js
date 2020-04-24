@@ -10,6 +10,10 @@ export const EDIT_BOOK_START = 'EDIT_BOOK_START';
 export const EDIT_BOOK = 'EDIT_BOOK';
 export const EDIT_BOOK_FAILED = 'EDIT_BOOK_FAILED';
 
+export const ADD_BOOK_START = 'ADD_BOOK_START';
+export const ADD_BOOK = 'ADD_BOOK';
+export const ADD_BOOK_FAILED = 'ADD_BOOK_FAILED';
+
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const AUTH_FAILED = 'AUTH_FAILED';
 export const AUTH_LOGOUT = 'AUTH_LOGOUT';

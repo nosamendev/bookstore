@@ -1,0 +1,43 @@
+.book-actions {
+  background-color: #f1f1f1;
+  text-align: left;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+.book-actions:after {
+  display: block;
+  clear: both;
+  content: '';
+}
+
+.find-book-container {
+  float: left;
+}
+
+.find-book-container .button {
+  margin: 0 20px 0 10px;
+}
+
+.add-book-container {
+  border-left: 2px dotted #acacac;
+  float: left;
+  padding-left: 20px;
+}
+
+.add-book-container .button {
+  position: relative;
+  padding-left: 35px;
+  text-decoration: none;
+}
+
+.add-book-container .button:before {
+  position: absolute;
+  display: block;
+  content: '';
+  left: 5px;
+  top: 3px;
+  width: 24px;
+  height: 24px;
+  background: url(../../images/plus.svg) 0 0;
+}

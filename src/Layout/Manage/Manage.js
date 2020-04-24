@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchBooks } from '../../store/actions';
+import { Link } from 'react-router-dom';
 import Loader from '../Loader/Loader';
 import DisplayCategory from '../DisplayCategory/DisplayCategory';
+import './Manage.css';
 
 const Manage = (props) => {
   useEffect(() => {
-    if (!props.books) {
-      props.fetchBooks();
-    }
+    props.fetchBooks();
   }, []);
 
   if (props.error) {
@@ -25,14 +25,18 @@ const Manage = (props) => {
 
   return (
     <>
-      <form>
-        <label htmlFor="find">
-          <span>Find a book</span>
-          <input name="find" type="text"></input>
-          Add book
-        </label>
-        <button type="button">Find</button>
-      </form>
+      <div className="book-actions">
+        <div className="find-book-container">
+          <input type="text"></input>
+          <span className="button">Find a Book</span>
+        </div>
+        <div className="add-book-container">
+          <Link to="/add" className="button">
+            Add New Book
+          </Link>
+        </div>
+      </div>
+
       <DisplayCategory showEdit={true} />
     </>
   );

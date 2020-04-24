@@ -113,6 +113,11 @@ button:hover {
   background-color: #6d9131;
 }
 
+.button:active,
+button:active {
+  background-color: #566d30;
+}
+
 .info-text {
   text-align: left;
   font-size: 125%;

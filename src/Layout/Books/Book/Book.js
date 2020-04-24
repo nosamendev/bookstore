@@ -7,7 +7,11 @@ const Book = (props) => {
   let img = images('./' + props.image);
 
   const gotoBookDetails = () => {
-    props.history.replace(`/books/${props.id}`);
+    if (props.showEdit) {
+      props.history.replace(`/edit/${props.id}`);
+    } else {
+      props.history.replace(`/books/${props.id}`);
+    }
   };
 
   const addToCart = () => {
