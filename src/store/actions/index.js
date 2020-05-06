@@ -6,6 +6,13 @@ export { editBook, editBookFailed } from './editBook.js';
 export { addBook, addBookFailed } from './addBook.js';
 
 export {
+  openFindBookDropdown,
+  closeFindBookDropdown,
+} from './findBookDropdown.js';
+
+export { searchStarted, searchStopped } from './searchBooks.js';
+
+export {
   authSuccess,
   authFailed,
   logout,

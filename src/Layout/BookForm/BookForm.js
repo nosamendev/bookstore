@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 const BookForm = (props) => {
   const formSubmit = (e) => {
@@ -143,6 +143,9 @@ const BookForm = (props) => {
             </table>
             <div className="button-container">
               <button type="submit">Save</button>
+              <Link className="button second-level" to="/manage">
+                Cancel
+              </Link>
             </div>
           </div>
         </div>

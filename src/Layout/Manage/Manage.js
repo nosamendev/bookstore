@@ -1,15 +1,28 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { fetchBooks } from '../../store/actions';
+import { closeFindBookDropdown } from '../../store/actions';
 import { Link } from 'react-router-dom';
 import Loader from '../Loader/Loader';
-import DisplayCategory from '../DisplayCategory/DisplayCategory';
+import FindBook from '../FindBook/FindBook';
+import DisplayBooks from '../DisplayBooks/DisplayBooks';
 import './Manage.css';
 
 const Manage = (props) => {
+  const [inputText, setInputText] = useState('');
+
   useEffect(() => {
     props.fetchBooks();
+    props.closeFindBookDropdown();
   }, []);
+
+  const inputRefFunc = (node) => {
+    node.focus();
+  };
+
+  const searchStringFunc = (str) => {
+    setInputText(str);
+  };
 
   if (props.error) {
     return <p className="error">ERROR: {props.errorDescription}</p>;
@@ -27,8 +40,11 @@ const Manage = (props) => {
     <>
       <div className="book-actions">
         <div className="find-book-container">
-          <input type="text"></input>
-          <span className="button">Find a Book</span>
+          <FindBook
+            inputRefFunc={inputRefFunc}
+            searchStringFunc={searchStringFunc}
+            inputText={inputText}
+          />
         </div>
         <div className="add-book-container">
           <Link to="/add" className="button">
@@ -36,8 +52,7 @@ const Manage = (props) => {
           </Link>
         </div>
       </div>
-
-      <DisplayCategory showEdit={true} />
+      <DisplayBooks books={props.books} inputText={inputText} />
     </>
   );
 };
@@ -51,4 +66,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchBooks })(Manage);
+export default connect(mapStateToProps, {
+  fetchBooks,
+  closeFindBookDropdown,
+})(Manage);

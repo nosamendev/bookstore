@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchBooks } from '../../store/actions';
 import Loader from '../Loader/Loader';
-import DisplayCategory from '../DisplayCategory/DisplayCategory';
+import DisplayCategories from '../DisplayCategories/DisplayCategories';
 import './Books.css';
 
 const Books = (props) => {
@@ -22,7 +22,7 @@ const Books = (props) => {
     );
   }
 
-  return <DisplayCategory showEdit={false} />;
+  return <DisplayCategories showEdit={false} />;
 };
 
 const mapStateToProps = (state) => {

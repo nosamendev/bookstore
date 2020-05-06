@@ -1,0 +1,42 @@
+.find-book-container .find-results {
+  background-color: #fff;
+  width: 300px;
+  border: 1px dotted #acacac;
+  position: absolute;
+  z-index: 10;
+  box-shadow: 0 0 10px 0 rgba(113, 113, 113, 0.4);
+  overflow-y: auto;
+  max-height: 200px;
+}
+
+.find-book-container .find-results a {
+  display: block;
+  padding: 8px 5px;
+  color: #3476ba;
+  text-decoration: none;
+  border-bottom: 1px dotted #acacac;
+}
+.find-book-container .find-results a:last-child {
+  border: 0;
+}
+
+.find-book-container .find-results a:hover {
+  background-color: #f1f1f1;
+}
+
+.find-book-container .find-results span + span {
+  color: #000;
+}
+
+.find-book-container .find-results.hide {
+  display: none;
+}
+
+.find-book-container form,
+.find-book-container form > div {
+  float: left;
+}
+
+.find-book-container button {
+  margin: 0 10px;
+}

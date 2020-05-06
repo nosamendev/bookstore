@@ -5,7 +5,7 @@ import './Navigation.css';
 
 const Navigation = (props) => {
   let welcome;
-  if (localStorage.email) {
+  if (props.isAuthenticated) {
     welcome = <div className="user-email">Welcome {localStorage.email}</div>;
   }
 

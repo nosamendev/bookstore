@@ -69,6 +69,12 @@ const AddBook = (props) => {
     setSubmitted(true);
   };
 
+  const images = require.context('../../images', true);
+  let img = '';
+  if (image) {
+    img = images('./' + image);
+  }
+
   if (props.error) {
     return <p className="error">ERROR: {props.errorDescription}</p>;
   }
@@ -92,7 +98,7 @@ const AddBook = (props) => {
       title={title}
       year={year}
       submitted={submitted}
-      img={'../../images/noimage.jpg'}
+      img={img}
       formSubmit={formSubmit}
       changeInput={changeInput}
     />

@@ -5,6 +5,8 @@ import authReducer from './authReducer';
 import cartStatusReducer from './cartStatusReducer';
 import editReducer from './editReducer';
 import addReducer from './addReducer';
+import findBookDropdownReducer from './findBookDropdownReducer';
+import searchBooksReducer from './searchBooksReducer';
 
 export default combineReducers({
   booksReducer: booksReducer,
@@ -13,4 +15,6 @@ export default combineReducers({
   cartStatusReducer: cartStatusReducer,
   editReducer: editReducer,
   addReducer: addReducer,
+  findBookDropdownReducer: findBookDropdownReducer,
+  searchBooksReducer: searchBooksReducer,
 });

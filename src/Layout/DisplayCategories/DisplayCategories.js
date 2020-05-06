@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Book from '../Books/Book/Book';
 
-const DisplayCategory = (props) => {
+const DisplayCategories = (props) => {
   if (props.books) {
     let kidsBooks = [];
     let romanceBooks = [];
@@ -88,4 +88,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(DisplayCategory);
+export default connect(mapStateToProps, null)(DisplayCategories);

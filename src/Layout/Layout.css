@@ -93,12 +93,17 @@ h3 {
   text-align: left;
 }
 
+h3 b {
+  color: #8ab83e;
+}
+
 .button,
 button {
   border: 0;
   margin: 0;
   padding: 5px 20px;
   background-color: #8ab83e;
+  border: 2px solid #8ab83e;
   color: #fff;
   font-size: 130%;
   border-radius: 20px;
@@ -111,11 +116,32 @@ button {
 .button:hover,
 button:hover {
   background-color: #6d9131;
+  border: 2px solid #6d9131;
 }
 
 .button:active,
 button:active {
   background-color: #566d30;
+  border: 2px solid #566d30;
+}
+
+.button.second-level {
+  border: 2px solid #8ab83e;
+  background: none;
+  color: #8ab83e;
+  box-sizing: border-box;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.button.second-level:hover {
+  border: 2px solid #6d9131;
+  color: #6d9131;
+}
+
+.button.second-level:active {
+  border: 2px solid #566d30;
+  color: #566d30;
 }
 
 .info-text {

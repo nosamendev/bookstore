@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { authCheckState } from './store/actions/auth';
 import Layout from './Layout/Layout';
@@ -14,6 +14,7 @@ import BookDetails from './Layout/Books/BookDetails/BookDetails';
 import EditBook from './Layout/EditBook/EditBook';
 import AddBook from './Layout/AddBook/AddBook';
 import Delete from './Layout/Delete/Delete';
+import Results from './Layout/Results/Results';
 
 const App = (props) => {
   useEffect(() => {
@@ -28,7 +29,7 @@ const App = (props) => {
       <Route path="/about" exact component={About} />
       <Route path="/books/:id" exact component={BookDetails} />
       <Route path="/auth" exact component={Auth} />
-
+      <Route path="/results" exact component={Results} />
       <Route render={() => <h1>(404) This file cannot be found</h1>} />
     </Switch>
   );
@@ -48,6 +49,8 @@ const App = (props) => {
         <Route path="delete" exact component={Delete} />
         <Route path="/logout" exact component={Logout} />
         <Route path="/auth" exact component={Auth} />
+        <Route path="/results" exact component={Results} />
+
         <Route render={() => <h1>(404) This file cannot be found</h1>} />
       </Switch>
     );
