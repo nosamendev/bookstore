@@ -14,6 +14,10 @@ export const ADD_BOOK_START = 'ADD_BOOK_START';
 export const ADD_BOOK = 'ADD_BOOK';
 export const ADD_BOOK_FAILED = 'ADD_BOOK_FAILED';
 
+export const DELETE_BOOK_START = 'DELETE_BOOK_START';
+export const DELETE_BOOK = 'DELETE_BOOK';
+export const DELETE_BOOK_FAILED = 'DELETE_BOOK_FAILED';
+
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const AUTH_FAILED = 'AUTH_FAILED';
 export const AUTH_LOGOUT = 'AUTH_LOGOUT';
@@ -22,6 +26,9 @@ export const AUTH_START = 'AUTH_START';
 
 export const CART_LOADED = 'CART_LOADED';
 export const CART_EMPTY = 'CART_EMPTY';
+
+export const OPEN_MODAL = 'OPEN_MODAL';
+export const CLOSE_MODAL = 'CLOSE_MODAL';
 
 export const OPEN_FIND_BOOK_DROPDOWN = 'OPEN_FIND_BOOK_DROPDOWN';
 export const CLOSE_FIND_BOOK_DROPDOWN = 'CLOSE_FIND_BOOK_DROPDOWN';

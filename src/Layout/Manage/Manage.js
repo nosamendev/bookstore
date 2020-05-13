@@ -14,7 +14,7 @@ const Manage = (props) => {
   useEffect(() => {
     props.fetchBooks();
     props.closeFindBookDropdown();
-  }, []);
+  }, [props.deleted]);
 
   const inputRefFunc = (node) => {
     node.focus();
@@ -63,6 +63,7 @@ const mapStateToProps = (state) => {
     errorDescription: state.booksReducer.description.message,
     error: state.booksReducer.error,
     loading: state.booksReducer.loading,
+    deleted: state.deleteReducer.deleted,
   };
 };
 

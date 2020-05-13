@@ -38,5 +38,16 @@
 }
 
 .find-book-container button {
-  margin: 0 10px;
+  margin: 0 20px 0 0;
+}
+
+.find-book-container form .close {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  background: url('../../images/x.svg') 0 0 no-repeat;
+  position: relative;
+  right: 20px;
+  top: 1px;
+  cursor: pointer;
 }

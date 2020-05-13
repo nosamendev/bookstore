@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { openModal } from '../../store/actions/modal';
 import Book from '../Books/Book/Book';
+import Modal from '../Modal/Modal';
+import DeleteConfirmation from '../Modal/ModalDialogs/DeleteConfirmation';
 
 const DisplayCategories = (props) => {
+  const [bookTitle, setBookTitle] = useState('');
+  const [bookAuthor, setBookAuthor] = useState('');
+  const [bookId, setBookId] = useState('');
+
+  const deleteBookFunc = (title, author, id) => {
+    props.openModal();
+    setBookTitle(title);
+    setBookAuthor(author);
+    setBookId(id);
+  };
+
   if (props.books) {
     let kidsBooks = [];
     let romanceBooks = [];
@@ -35,6 +49,7 @@ const DisplayCategories = (props) => {
           price={kidsBooks[i].price}
           image={kidsBooks[i].image}
           showEdit={props.showEdit}
+          deleteBookFunc={deleteBookFunc}
         />
       );
     });
@@ -49,6 +64,7 @@ const DisplayCategories = (props) => {
           price={romanceBooks[i].price}
           image={romanceBooks[i].image}
           showEdit={props.showEdit}
+          deleteBookFunc={deleteBookFunc}
         />
       );
     });
@@ -63,19 +79,30 @@ const DisplayCategories = (props) => {
           price={thrillerBooks[i].price}
           image={thrillerBooks[i].image}
           showEdit={props.showEdit}
+          deleteBookFunc={deleteBookFunc}
         />
       );
     });
 
     return (
-      <div>
-        <h3>KIDS</h3>
-        <div className="category-container">{kidsCategory}</div>
-        <h3>ROMANCE</h3>
-        <div className="category-container">{romanceCategory}</div>
-        <h3>THRILLER</h3>
-        <div className="category-container">{thrillerCategory}</div>
-      </div>
+      <>
+        <div>
+          <h3>KIDS</h3>
+          <div className="category-container">{kidsCategory}</div>
+          <h3>ROMANCE</h3>
+          <div className="category-container">{romanceCategory}</div>
+          <h3>THRILLER</h3>
+          <div className="category-container">{thrillerCategory}</div>
+        </div>
+        <Modal>
+          <DeleteConfirmation
+            modalTitle="Are you sure you want to delete:"
+            title={bookTitle}
+            author={bookAuthor}
+            id={bookId}
+          />
+        </Modal>
+      </>
     );
   } else {
     return null;
@@ -88,4 +115,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(DisplayCategories);
+export default connect(mapStateToProps, { openModal })(DisplayCategories);

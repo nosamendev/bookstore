@@ -3,22 +3,11 @@ import { withRouter } from 'react-router-dom';
 import Book from '../Books/Book/Book';
 
 const DisplayResults = (props) => {
-  let msg = (
-    <h3>
-      Results for '<b>{props.text}</b>'
-    </h3>
-  );
-
-  //const text = props.location.param;
   const text = props.text;
 
-  if (text == '') {
-    msg = <p>No results found.</p>;
-  }
-
-  let booksFound = null;
+  let booksFiltering = [];
   if (props.books && text) {
-    booksFound = props.books.map((book, _) => {
+    booksFiltering = props.books.map((book, _) => {
       const authorLowerCase = book.author.toLowerCase();
       const titleLowerCase = book.title.toLowerCase();
       const textLowerCase = text.toLowerCase();
@@ -38,9 +27,22 @@ const DisplayResults = (props) => {
             showEdit={props.showEdit}
           />
         );
-      }
+      } else return null;
     });
   }
+
+  const booksFound = booksFiltering.filter((item, _) => {
+    return item !== null;
+  });
+
+  let msg = (
+    <>
+      <h3>
+        Results for '<b>{props.text}</b>'
+      </h3>
+      <p>{booksFound.length} books found.</p>
+    </>
+  );
 
   return (
     <div>

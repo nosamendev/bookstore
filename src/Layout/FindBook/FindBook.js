@@ -35,10 +35,13 @@ const FindBook = (props) => {
     props.searchStringFunc(e.target.value);
   };
 
+  const onCloseClick = () => {
+    props.closeFindBookDropdown();
+    props.searchStringFunc('');
+  };
+
   const onFormSubmit = (e) => {
     e.preventDefault();
-    //props.searchStartedFunc();
-    //props.history.push({ pathname: '/results', param: text });
     props.searchStarted();
     props.closeFindBookDropdown();
   };
@@ -76,6 +79,7 @@ const FindBook = (props) => {
           onChange={(e) => onInputChange(e)}
           placeholder="Find a Book (title, author)"
         ></input>
+        <span className="close" onClick={onCloseClick}></span>
 
         <div className="find-results" ref={dropdownRef}>
           {booksFound}

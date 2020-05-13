@@ -111,6 +111,7 @@ button {
   transition: background-color 0.3s ease 0s;
   -webkit-transition: background-color 0.3s ease 0s;
   cursor: pointer;
+  outline: 0;
 }
 
 .button:hover,
@@ -163,6 +164,7 @@ select {
   border: 1px solid #b9bdbf;
   height: 35px;
   padding: 5px;
+  outline: 0;
 }
 
 input:focus,
@@ -176,10 +178,15 @@ textarea {
   border: 1px solid #b9bdbf;
   height: 100px;
   padding: 5px;
+  outline: 0;
 }
 
 .button-container {
   border-top: 2px dotted #b9bdbf;
   margin-top: 20px;
   padding-top: 20px;
+}
+
+h3 + p {
+  text-align: left;
 }
