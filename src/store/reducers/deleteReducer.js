@@ -2,6 +2,7 @@ import {
   DELETE_BOOK,
   DELETE_BOOK_START,
   DELETE_BOOK_FAILED,
+  BOOK_TO_BE_DELETED,
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -25,6 +26,8 @@ const deleteReducer = (state = INITIAL_STATE, action) => {
         error: true,
         deleted: false,
       };
+    case BOOK_TO_BE_DELETED:
+      return { ...state, deleted: action.payload };
 
     default:
       return state;

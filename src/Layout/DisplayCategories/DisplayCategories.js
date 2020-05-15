@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { openModal } from '../../store/actions/modal';
+import { openModal } from '../../store/actions';
 import Book from '../Books/Book/Book';
 import Modal from '../Modal/Modal';
 import DeleteConfirmation from '../Modal/ModalDialogs/DeleteConfirmation';

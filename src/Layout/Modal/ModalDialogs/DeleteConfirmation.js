@@ -1,17 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import { closeModal } from '../../../store/actions';
+import { openModal, closeModal } from '../../../store/actions';
 import { withRouter } from 'react-router-dom';
 import { deleteBook } from '../../../store/actions/deleteBook';
 import Loader from '../../Loader/Loader';
 import ConfirmErr from './ConfirmErr';
-import ConfirmOk from './ConfirmOk';
 
 const DeleteConfirmation = (props) => {
   const handleOKButton = () => {
     props.deleteBook(props.id);
-    //props.history.push('/manage');
   };
 
   const handleCancelButton = () => {
@@ -48,10 +45,6 @@ const DeleteConfirmation = (props) => {
     );
   }
 
-  if (props.deleted) {
-    content = <ConfirmOk title="The book has been deleted." />;
-  }
-
   return (
     <>
       <div>{content}</div>
@@ -64,10 +57,11 @@ const mapStateToProps = (state) => {
     error: state.deleteReducer.error,
     loading: state.deleteReducer.loading,
     errorDescription: state.deleteReducer.description.message,
-    deleted: state.deleteReducer.deleted,
   };
 };
 
 export default withRouter(
-  connect(mapStateToProps, { closeModal, deleteBook })(DeleteConfirmation)
+  connect(mapStateToProps, { openModal, closeModal, deleteBook })(
+    DeleteConfirmation
+  )
 );

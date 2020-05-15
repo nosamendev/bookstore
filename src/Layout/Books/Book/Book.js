@@ -2,11 +2,6 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { openModal } from '../../../store/actions/modal';
-import Modal from '../../Modal/Modal';
-import Loader from '../../Loader/Loader';
-import ConfirmOk from '../../Modal/ModalDialogs/ConfirmOk';
-import ConfirmErr from '../../Modal/ModalDialogs/ConfirmErr';
-import DeleteConfirmation from '../../Modal/ModalDialogs/DeleteConfirmation';
 import './Book.css';
 
 const Book = (props) => {
