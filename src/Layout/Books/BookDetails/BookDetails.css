@@ -16,6 +16,7 @@
   width: 230px;
   height: 330px;
   background-size: cover;
+  background-position: center;
   margin: 20px auto;
   position: relative;
   border: 20px solid #f1f1f1;

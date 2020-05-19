@@ -6,12 +6,10 @@ import {
   closeFindBookDropdown,
   openFindBookDropdown,
 } from '../../store/actions/findBookDropdown';
-import { searchStarted } from '../../store/actions/searchBooks';
+import { searchStarted, searchStopped } from '../../store/actions/searchBooks';
 import './FindBook.css';
 
 const FindBook = (props) => {
-  //const [text, setText] = useState('');
-
   //autofocus:
   const inputRef = useCallback((node) => {
     if (node) {
@@ -30,7 +28,6 @@ const FindBook = (props) => {
   });
 
   const onInputChange = (e) => {
-    //setText(e.target.value);
     props.openFindBookDropdown();
     props.searchStringFunc(e.target.value);
   };
@@ -38,6 +35,7 @@ const FindBook = (props) => {
   const onCloseClick = () => {
     props.closeFindBookDropdown();
     props.searchStringFunc('');
+    props.searchStopped();
   };
 
   const onFormSubmit = (e) => {
@@ -102,4 +100,5 @@ export default connect(mapStateToProps, {
   closeFindBookDropdown,
   openFindBookDropdown,
   searchStarted,
+  searchStopped,
 })(withRouter(FindBook));

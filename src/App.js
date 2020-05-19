@@ -46,8 +46,8 @@ const App = (props) => {
         <Route path="/add" exact component={AddBook} />
 
         <Route path="delete" exact component={Delete} />
-        <Route path="/logout" exact component={Logout} />
         <Route path="/auth" exact component={Auth} />
+        <Route path="/logout" exact component={Logout} />
 
         <Route render={() => <h1>(404) This file cannot be found</h1>} />
       </Switch>

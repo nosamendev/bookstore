@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { openModal } from '../../store/actions';
 import Book from '../Books/Book/Book';
+import Modal from '../Modal/Modal';
+import DeleteConfirmation from '../Modal/ModalDialogs/DeleteConfirmation';
 
 const DisplayResults = (props) => {
+  const [bookTitle, setBookTitle] = useState('');
+  const [bookAuthor, setBookAuthor] = useState('');
+  const [bookId, setBookId] = useState('');
+
+  const deleteBookFunc = (title, author, id) => {
+    props.openModal();
+    setBookTitle(title);
+    setBookAuthor(author);
+    setBookId(id);
+  };
+
   const text = props.text;
 
   let booksFiltering = [];
@@ -17,15 +32,26 @@ const DisplayResults = (props) => {
         titleLowerCase.includes(textLowerCase)
       ) {
         return (
-          <Book
-            id={book.id}
-            key={book.id}
-            title={book.title}
-            author={book.author}
-            price={book.price}
-            image={book.image}
-            showEdit={props.showEdit}
-          />
+          <>
+            <Book
+              id={book.id}
+              key={book.id}
+              title={book.title}
+              author={book.author}
+              price={book.price}
+              image={book.image}
+              showEdit={props.showEdit}
+              deleteBookFunc={deleteBookFunc}
+            />
+            <Modal>
+              <DeleteConfirmation
+                modalTitle="Are you sure you want to delete:"
+                title={bookTitle}
+                author={bookAuthor}
+                id={bookId}
+              />
+            </Modal>
+          </>
         );
       } else return null;
     });
@@ -52,4 +78,4 @@ const DisplayResults = (props) => {
   );
 };
 
-export default withRouter(DisplayResults);
+export default connect(null, { openModal })(withRouter(DisplayResults));

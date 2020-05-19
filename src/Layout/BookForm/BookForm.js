@@ -38,7 +38,7 @@ const BookForm = (props) => {
                     <input
                       name="title"
                       type="text"
-                      pattern="[a-z A-Z0-9''-.]{2,}"
+                      pattern="[a-z A-Z0-9''-.?]{2,}"
                       placeholder="Title"
                       value={props.title}
                       onChange={changeInput}

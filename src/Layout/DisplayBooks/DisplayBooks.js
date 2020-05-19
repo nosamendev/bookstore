@@ -6,11 +6,11 @@ import DisplayResults from '../DisplayResults/DisplayResults';
 const DisplayBooks = (props) => {
   const displayBooks = () => {
     if (!props.searchBooksStarted) {
-      return <DisplayCategories showEdit={true} />;
+      return <DisplayCategories showEdit={props.showEdit} />;
     } else {
       return (
         <DisplayResults
-          showEdit={true}
+          showEdit={props.showEdit}
           books={props.books}
           text={props.inputText}
         />

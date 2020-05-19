@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { fetchBooks, bookToBeDeleted, closeModal } from '../../store/actions';
+import {
+  fetchBooks,
+  bookToBeDeleted,
+  closeModal,
+  searchStopped,
+} from '../../store/actions';
 import { closeFindBookDropdown } from '../../store/actions';
 import { Link } from 'react-router-dom';
 import Loader from '../Loader/Loader';
@@ -16,6 +21,9 @@ const Manage = (props) => {
     props.closeFindBookDropdown();
     props.bookToBeDeleted();
     props.closeModal();
+    return () => {
+      props.searchStopped();
+    };
   }, [props.deleted]);
 
   const inputRefFunc = (node) => {
@@ -54,7 +62,7 @@ const Manage = (props) => {
           </Link>
         </div>
       </div>
-      <DisplayBooks books={props.books} inputText={inputText} />
+      <DisplayBooks books={props.books} inputText={inputText} showEdit={true} />
     </>
   );
 };
@@ -74,4 +82,5 @@ export default connect(mapStateToProps, {
   closeFindBookDropdown,
   bookToBeDeleted,
   closeModal,
+  searchStopped,
 })(Manage);
