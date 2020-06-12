@@ -1,15 +1,16 @@
-import { CART_LOADED, CART_EMPTY } from '../actions/types';
+import { CART_INCREASE, CART_DECREASE, CART_EMPTY } from '../actions/types';
 
 const INITIAL_STATE = {
-  isCartLoaded: false,
+  cartItems: 0,
 };
-
 const cartStatusReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case CART_LOADED:
-      return { ...state, ...action.payload, isCartLoaded: true };
+    case CART_INCREASE:
+      return { ...state, cartItems: state.cartItems + action.payload };
+    case CART_DECREASE:
+      return { ...state, cartItems: state.cartItems - action.payload };
     case CART_EMPTY:
-      return { ...state, isCartLoaded: false };
+      return { ...state, cartItems: action.payload };
 
     default:
       return state;

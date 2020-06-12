@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './Navigation.css';
@@ -8,6 +8,12 @@ const Navigation = (props) => {
   if (props.isAuthenticated) {
     welcome = <div className="user-email">Welcome {localStorage.email}</div>;
   }
+
+  const cartRef = useCallback((node) => {
+    if (node) {
+      node.innerHTML = '(' + props.cartItems + ')';
+    }
+  });
 
   return (
     <nav>
@@ -51,11 +57,8 @@ const Navigation = (props) => {
           </>
         )}
         <li>
-          <NavLink
-            className={props.isCartLoaded ? 'cart full' : 'cart'}
-            to="/cart"
-          >
-            CART<span></span>
+          <NavLink to="/cart" exact className="cart">
+            CART<span ref={cartRef}>(0)</span>
           </NavLink>
         </li>
         {props.isAuthenticated ? (
@@ -102,10 +105,7 @@ const Navigation = (props) => {
               </li>
             )}
             <li>
-              <NavLink
-                className={props.isCartLoaded ? 'cart full' : 'cart'}
-                to="/cart"
-              >
+              <NavLink className="cart" to="/cart">
                 CART<span></span>
               </NavLink>
             </li>
@@ -120,7 +120,7 @@ const mapStateToProps = (state) => {
   return {
     isAuthenticated: state.authReducer.token !== null,
     email: state.authReducer.email,
-    isCartLoaded: state.cartStatusReducer.isCartLoaded,
+    cartItems: state.cartStatusReducer.cartItems,
   };
 };
 

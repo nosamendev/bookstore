@@ -2,21 +2,8 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { openModal } from '../../store/actions';
 import Book from '../Books/Book/Book';
-import Modal from '../Modal/Modal';
-import DeleteConfirmation from '../Modal/ModalDialogs/DeleteConfirmation';
 
 const DisplayCategories = (props) => {
-  const [bookTitle, setBookTitle] = useState('');
-  const [bookAuthor, setBookAuthor] = useState('');
-  const [bookId, setBookId] = useState('');
-
-  const deleteBookFunc = (title, author, id) => {
-    props.openModal();
-    setBookTitle(title);
-    setBookAuthor(author);
-    setBookId(id);
-  };
-
   if (props.books) {
     let kidsBooks = [];
     let romanceBooks = [];
@@ -48,8 +35,8 @@ const DisplayCategories = (props) => {
           author={kidsBooks[i].author}
           price={kidsBooks[i].price}
           image={kidsBooks[i].image}
-          showEdit={props.showEdit}
-          deleteBookFunc={deleteBookFunc}
+          manage={props.manage}
+          deleteBookFunc={props.deleteBookFunc}
         />
       );
     });
@@ -63,8 +50,8 @@ const DisplayCategories = (props) => {
           author={romanceBooks[i].author}
           price={romanceBooks[i].price}
           image={romanceBooks[i].image}
-          showEdit={props.showEdit}
-          deleteBookFunc={deleteBookFunc}
+          manage={props.manage}
+          deleteBookFunc={props.deleteBookFunc}
         />
       );
     });
@@ -78,15 +65,15 @@ const DisplayCategories = (props) => {
           author={thrillerBooks[i].author}
           price={thrillerBooks[i].price}
           image={thrillerBooks[i].image}
-          showEdit={props.showEdit}
-          deleteBookFunc={deleteBookFunc}
+          manage={props.manage}
+          deleteBookFunc={props.deleteBookFunc}
         />
       );
     });
 
     return (
       <>
-        <div>
+        <div className={props.containerClass}>
           <h3>KIDS</h3>
           <div className="category-container">{kidsCategory}</div>
           <h3>ROMANCE</h3>
@@ -94,14 +81,6 @@ const DisplayCategories = (props) => {
           <h3>THRILLER</h3>
           <div className="category-container">{thrillerCategory}</div>
         </div>
-        <Modal>
-          <DeleteConfirmation
-            modalTitle="Are you sure you want to delete:"
-            title={bookTitle}
-            author={bookAuthor}
-            id={bookId}
-          />
-        </Modal>
       </>
     );
   } else {

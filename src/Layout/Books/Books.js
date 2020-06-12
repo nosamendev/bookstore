@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { fetchBooks, searchStopped } from '../../store/actions';
 import Loader from '../Loader/Loader';
-import DisplayCategories from '../DisplayCategories/DisplayCategories';
 import FindBook from '../FindBook/FindBook';
 import DisplayBooks from '../DisplayBooks/DisplayBooks';
+import Modal from '../Modal/Modal';
+import Confirm from '../Modal/ModalDialogs/Confirm';
 import './Books.css';
 
 const Books = (props) => {
@@ -37,7 +38,6 @@ const Books = (props) => {
     );
   }
 
-  //return <DisplayCategories showEdit={false} />;
   return (
     <>
       <div className="book-actions">
@@ -52,8 +52,12 @@ const Books = (props) => {
       <DisplayBooks
         books={props.books}
         inputText={inputText}
-        showEdit={false}
+        manage={false}
+        containerClass="books-list"
       />
+      <Modal>
+        <Confirm title="The book was added to the Cart" />
+      </Modal>
     </>
   );
 };

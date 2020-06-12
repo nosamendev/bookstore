@@ -3,21 +3,8 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { openModal } from '../../store/actions';
 import Book from '../Books/Book/Book';
-import Modal from '../Modal/Modal';
-import DeleteConfirmation from '../Modal/ModalDialogs/DeleteConfirmation';
 
 const DisplayResults = (props) => {
-  const [bookTitle, setBookTitle] = useState('');
-  const [bookAuthor, setBookAuthor] = useState('');
-  const [bookId, setBookId] = useState('');
-
-  const deleteBookFunc = (title, author, id) => {
-    props.openModal();
-    setBookTitle(title);
-    setBookAuthor(author);
-    setBookId(id);
-  };
-
   const text = props.text;
 
   let booksFiltering = [];
@@ -40,17 +27,9 @@ const DisplayResults = (props) => {
               author={book.author}
               price={book.price}
               image={book.image}
-              showEdit={props.showEdit}
-              deleteBookFunc={deleteBookFunc}
+              manage={props.manage}
+              deleteBookFunc={props.deleteBookFunc}
             />
-            <Modal>
-              <DeleteConfirmation
-                modalTitle="Are you sure you want to delete:"
-                title={bookTitle}
-                author={bookAuthor}
-                id={bookId}
-              />
-            </Modal>
           </>
         );
       } else return null;
@@ -71,7 +50,7 @@ const DisplayResults = (props) => {
   );
 
   return (
-    <div>
+    <div className={props.containerClass}>
       {msg}
       <div className="category-container">{booksFound}</div>
     </div>

@@ -92,6 +92,15 @@
   border: 1px dotted #6d9131;
 }
 
+.book-container .delete-from-cart {
+  width: 45px;
+  height: 45px;
+  background: url(../../../images/cart_empty.png) center no-repeat;
+  border: 0;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
 .book-container .actions {
   margin-top: 10px;
   margin-left: 15px;
@@ -121,6 +130,21 @@
 .book-container .actions a:hover,
 .book-container .actions .delete:hover {
   opacity: 0.7;
+}
+
+.books-list .book-container .actions,
+.books-list .book-container .delete-from-cart {
+  display: none;
+}
+
+.manage-books .book-container .cart,
+.manage-books .book-container .delete-from-cart {
+  display: none;
+}
+
+.cart-contents .book-container .actions,
+.cart-contents .book-container .cart {
+  display: none;
 }
 
 /*============= Mobile styles: ======================*/

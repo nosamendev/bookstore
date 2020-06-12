@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import DisplayCategories from '../DisplayCategories/DisplayCategories';
 import DisplayResults from '../DisplayResults/DisplayResults';
@@ -6,13 +6,21 @@ import DisplayResults from '../DisplayResults/DisplayResults';
 const DisplayBooks = (props) => {
   const displayBooks = () => {
     if (!props.searchBooksStarted) {
-      return <DisplayCategories showEdit={props.showEdit} />;
+      return (
+        <DisplayCategories
+          manage={props.manage}
+          containerClass={props.containerClass}
+          deleteBookFunc={props.deleteBookFunc}
+        />
+      );
     } else {
       return (
         <DisplayResults
-          showEdit={props.showEdit}
+          manage={props.manage}
+          containerClass={props.containerClass}
           books={props.books}
           text={props.inputText}
+          deleteBookFunc={props.deleteBookFunc}
         />
       );
     }

@@ -21,6 +21,6 @@ export {
   authCheckState,
 } from './auth.js';
 
-export { loadCart, emptyCart } from './cartStatus';
+export { cartIncr, cartDecr, cartEmpty } from './cartStatus';
 
 export { openModal, closeModal } from './modal.js';

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { openModal } from '../../../store/actions/modal';
+import { openModal, cartIncr, cartDecr } from '../../../store/actions';
 import './Book.css';
 
 const Book = (props) => {
@@ -9,36 +9,49 @@ const Book = (props) => {
   let img = images('./' + props.image);
 
   const gotoBookDetails = () => {
-    if (props.showEdit) {
+    if (props.manage) {
       props.history.replace(`/edit/${props.id}`);
     } else {
       props.history.replace(`/books/${props.id}`);
     }
   };
 
+  const changeCart = (cart) => {
+    props.changeCartFunc(cart);
+  };
+
   const addToCart = () => {
     //save to local store
-    //redirect to cart
-    props.history.replace('/cart');
+    const cart = JSON.parse(localStorage.cart);
+
+    console.log(props.cartId);
+    const book = {
+      id: props.id,
+      title: props.title,
+      author: props.author,
+      price: props.price,
+      image: props.image,
+      cartId: props.id + Math.floor(Math.random() * 100000),
+    };
+    cart.push(book);
+    localStorage.cart = JSON.stringify(cart);
+    props.cartIncr(1);
+    props.openModal();
+  };
+
+  const deleteFromCart = () => {
+    const cart = JSON.parse(localStorage.cart);
+    const cartNew = cart.filter((item, _) => {
+      return item.cartId !== props.cartId;
+    });
+    localStorage.cart = JSON.stringify(cartNew);
+    props.cartDecr(1);
+    changeCart(cartNew);
   };
 
   const deleteBook = () => {
     props.deleteBookFunc(props.title, props.author, props.id);
   };
-
-  let buttons = null;
-  if (props.showEdit) {
-    buttons = (
-      <div className="actions">
-        <Link to={`/edit/${props.id}`} className="edit" title="Edit"></Link>
-        <span className="delete" title="Delete" onClick={deleteBook}></span>
-      </div>
-    );
-  } else {
-    buttons = (
-      <button className="cart" title="Add to Cart" onClick={addToCart}></button>
-    );
-  }
 
   return (
     <>
@@ -54,11 +67,27 @@ const Book = (props) => {
         </div>
         <div className="action">
           <div className="price">${props.price}</div>
-          {buttons}
+          {/*buttons*/}
+          <div className="actions">
+            <Link to={`/edit/${props.id}`} className="edit" title="Edit"></Link>
+            <span className="delete" title="Delete" onClick={deleteBook}></span>
+          </div>
+          <button
+            className="cart"
+            title="Add to Cart"
+            onClick={addToCart}
+          ></button>
+          <button
+            className="delete-from-cart"
+            title="Delete from Cart"
+            onClick={deleteFromCart}
+          ></button>
         </div>
       </div>
     </>
   );
 };
 
-export default connect(null, { openModal })(withRouter(Book));
+export default connect(null, { openModal, cartIncr, cartDecr })(
+  withRouter(Book)
+);

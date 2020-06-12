@@ -1,15 +1,22 @@
-import { CART_LOADED, CART_EMPTY } from '../actions/types';
+import { CART_INCREASE, CART_DECREASE, CART_EMPTY } from '../actions/types';
 
-export const loadCart = () => {
+export const cartIncr = (n) => {
   return {
-    type: CART_LOADED,
-    payload: true,
+    type: CART_INCREASE,
+    payload: n,
   };
 };
 
-export const emptyCart = () => {
+export const cartDecr = (n) => {
+  return {
+    type: CART_DECREASE,
+    payload: n,
+  };
+};
+
+export const cartEmpty = () => {
   return {
     type: CART_EMPTY,
-    payload: false,
+    payload: 0,
   };
 };

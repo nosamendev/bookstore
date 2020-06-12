@@ -1,9 +1,10 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
 import { connect } from 'react-redux';
 import { closeFindBookDropdown } from '../store/actions/findBookDropdown';
+import { cartIncr, cartEmpty } from '../store/actions/cartStatus';
 import './Layout.css';
 
 const Layout = (props) => {
@@ -13,11 +14,21 @@ const Layout = (props) => {
     }
   });
 
+  useEffect(() => {
+    const cart = JSON.parse(localStorage.cart);
+    props.cartEmpty();
+    props.cartIncr(cart.length);
+  });
+
   const closeDropdowns = (e) => {
     if (!e.target.classList.contains('find-results')) {
       props.closeFindBookDropdown();
     }
   };
+
+  if (!localStorage.cart) {
+    localStorage.cart = JSON.stringify([]);
+  }
 
   return (
     <React.Fragment>
@@ -32,4 +43,6 @@ const Layout = (props) => {
   );
 };
 
-export default connect(null, { closeFindBookDropdown })(Layout);
+export default connect(null, { closeFindBookDropdown, cartIncr, cartEmpty })(
+  Layout
+);

@@ -4,7 +4,7 @@ import { openModal, closeModal } from '../../../store/actions';
 import { withRouter } from 'react-router-dom';
 import { deleteBook } from '../../../store/actions/deleteBook';
 import Loader from '../../Loader/Loader';
-import ConfirmErr from './ConfirmErr';
+import Confirm from './Confirm';
 
 const DeleteConfirmation = (props) => {
   const handleOKButton = () => {
@@ -38,7 +38,7 @@ const DeleteConfirmation = (props) => {
 
   if (props.error) {
     content = (
-      <ConfirmErr
+      <Confirm
         title="The book couldn't be deleted."
         text={props.errorDescription}
       />

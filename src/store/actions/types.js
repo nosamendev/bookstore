@@ -25,7 +25,8 @@ export const AUTH_LOGOUT = 'AUTH_LOGOUT';
 export const AUTH_EMAIL = 'AUTH_EMAIL';
 export const AUTH_START = 'AUTH_START';
 
-export const CART_LOADED = 'CART_LOADED';
+export const CART_INCREASE = 'CART_INCREASE';
+export const CART_DECREASE = 'CART_DECREASE';
 export const CART_EMPTY = 'CART_EMPTY';
 
 export const OPEN_MODAL = 'OPEN_MODAL';

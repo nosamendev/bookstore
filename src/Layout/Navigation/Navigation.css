@@ -47,6 +47,10 @@ nav li a:hover:before {
   right: 10px;
 }
 
+nav li .cart span {
+  color: #a4d4e9;
+}
+
 .mobile-menu {
   text-align: right;
   position: absolute;
