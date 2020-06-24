@@ -9,6 +9,7 @@ import deleteReducer from './deleteReducer';
 import findBookDropdownReducer from './findBookDropdownReducer';
 import searchBooksReducer from './searchBooksReducer';
 import modalReducer from './modalReducer';
+import saveOrderReducer from './saveOrderReducer';
 
 export default combineReducers({
   booksReducer: booksReducer,
@@ -21,4 +22,5 @@ export default combineReducers({
   searchBooksReducer: searchBooksReducer,
   modalReducer: modalReducer,
   deleteReducer: deleteReducer,
+  saveOrderReducer: saveOrderReducer,
 });

@@ -24,3 +24,5 @@ export {
 export { cartIncr, cartDecr, cartEmpty } from './cartStatus';
 
 export { openModal, closeModal } from './modal.js';
+
+export { saveOrder } from './saveOrder';

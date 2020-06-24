@@ -190,3 +190,10 @@ textarea {
 h3 + p {
   text-align: left;
 }
+
+hr {
+  height: 0;
+  border-top: 2px dotted #acacac;
+  border-bottom: 0;
+  margin: 20px 0;
+}

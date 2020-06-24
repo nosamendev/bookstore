@@ -58,10 +58,10 @@ export const auth = (email, password, isSignup) => async (dispatch) => {
   };
 
   let url =
-    'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyBcokUkpmxyWWEool1f033ZRNPPXKaM9pg';
+    'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyBfD-EkwP_gOMdnOJaZcD09D5eMieiBOI8';
   if (!isSignup) {
     url =
-      'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyBcokUkpmxyWWEool1f033ZRNPPXKaM9pg';
+      'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyBfD-EkwP_gOMdnOJaZcD09D5eMieiBOI8';
   }
 
   try {

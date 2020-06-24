@@ -1,7 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { openModal, cartIncr, cartDecr } from '../../../store/actions';
+import {
+  openModal,
+  closeModal,
+  cartIncr,
+  cartDecr,
+} from '../../../store/actions';
 import './Book.css';
 
 const Book = (props) => {
@@ -24,7 +29,6 @@ const Book = (props) => {
     //save to local store
     const cart = JSON.parse(localStorage.cart);
 
-    console.log(props.cartId);
     const book = {
       id: props.id,
       title: props.title,
@@ -47,6 +51,8 @@ const Book = (props) => {
     localStorage.cart = JSON.stringify(cartNew);
     props.cartDecr(1);
     changeCart(cartNew);
+    props.openModal();
+    setTimeout(() => props.closeModal(), 500);
   };
 
   const deleteBook = () => {
@@ -88,6 +94,6 @@ const Book = (props) => {
   );
 };
 
-export default connect(null, { openModal, cartIncr, cartDecr })(
+export default connect(null, { openModal, closeModal, cartIncr, cartDecr })(
   withRouter(Book)
 );
