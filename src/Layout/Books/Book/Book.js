@@ -1,12 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {
-  openModal,
-  closeModal,
-  cartIncr,
-  cartDecr,
-} from '../../../store/actions';
+import { openModal, closeModal, cartContents } from '../../../store/actions';
 import './Book.css';
 
 const Book = (props) => {
@@ -39,7 +34,9 @@ const Book = (props) => {
     };
     cart.push(book);
     localStorage.cart = JSON.stringify(cart);
-    props.cartIncr(1);
+    //props.cartIncr(1);
+    props.cartContents(cart.length);
+
     props.openModal();
   };
 
@@ -49,7 +46,8 @@ const Book = (props) => {
       return item.cartId !== props.cartId;
     });
     localStorage.cart = JSON.stringify(cartNew);
-    props.cartDecr(1);
+    //props.cartDecr(1);
+    props.cartContents(cartNew.length);
     changeCart(cartNew);
     props.openModal();
     setTimeout(() => props.closeModal(), 500);
@@ -94,6 +92,8 @@ const Book = (props) => {
   );
 };
 
-export default connect(null, { openModal, closeModal, cartIncr, cartDecr })(
-  withRouter(Book)
-);
+export default connect(null, {
+  openModal,
+  closeModal,
+  cartContents,
+})(withRouter(Book));

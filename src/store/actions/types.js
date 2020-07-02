@@ -25,9 +25,7 @@ export const AUTH_LOGOUT = 'AUTH_LOGOUT';
 export const AUTH_EMAIL = 'AUTH_EMAIL';
 export const AUTH_START = 'AUTH_START';
 
-export const CART_INCREASE = 'CART_INCREASE';
-export const CART_DECREASE = 'CART_DECREASE';
-export const CART_EMPTY = 'CART_EMPTY';
+export const CART_CONTENTS = 'CART_CONTENTS';
 
 export const OPEN_MODAL = 'OPEN_MODAL';
 export const CLOSE_MODAL = 'CLOSE_MODAL';
@@ -41,3 +39,8 @@ export const SEARCH_STOPPED = 'SEARCH_STOPPED';
 export const SAVE_ORDER_START = 'SAVE_ORDER_START';
 export const SAVE_ORDER = 'SAVE_ORDER';
 export const SAVE_ORDER_FAILED = 'SAVE_ORDER_FAILED';
+export const SAVE_SUCCESS = 'SAVE_SUCCESS';
+
+export const FETCH_MY_ORDERS_START = 'FETCH_MY_ORDERS_START';
+export const FETCH_MY_ORDERS = 'FETCH_MY_ORDERS';
+export const FETCH_MY_ORDERS_FAILED = 'FETCH_MY_ORDERS_FAILED';

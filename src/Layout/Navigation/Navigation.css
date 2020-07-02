@@ -51,52 +51,76 @@ nav li .cart span {
   color: #a4d4e9;
 }
 
-.mobile-menu {
-  text-align: right;
-  position: absolute;
-  right: 20px;
-  z-index: 2;
+@media all and (max-width: 836px) {
+  .mobile-menu {
+    display: inline-block;
+  }
+
+  nav > ul {
+    display: none;
+  }
+
+  .mobile-menu {
+    text-align: right;
+    position: absolute;
+    right: 10px;
+    z-index: 2;
+  }
+
+  .mobile-menu ul {
+    float: none;
+    margin-top: -3px;
+    display: none;
+
+    position: relative;
+    right: 0;
+  }
+
+  .mobile-menu:hover ul {
+    display: block;
+  }
+
+  .mobile-menu ul li {
+    display: block;
+    float: none;
+    text-align: left;
+    border-top: 1px solid #fff;
+    position: relative;
+  }
+
+  .mobile-menu ul li a {
+    padding: 8px 20px;
+    display: block;
+    float: none;
+    background-color: #3476ba;
+  }
+
+  .mobile-menu > span.menu {
+    display: inline-block;
+    width: 32px;
+    height: 28px;
+    background: url(../../images/menu.svg) center no-repeat;
+    cursor: pointer;
+  }
+
+  nav .mobile-menu li a.active::before,
+  nav .mobile-menu li a:hover::before {
+    display: none;
+    border: 0;
+  }
+
+  nav .mobile-menu li a:hover,
+  nav .mobile-menu li a.active {
+    background-color: #5695d5;
+  }
 }
 
-.mobile-menu ul {
-  float: none;
-  margin-top: -5px;
-  display: none;
-  background-color: #f8d9e8;
-  position: relative;
-  right: 0;
-}
-
-.mobile-menu:hover ul {
-  display: block;
-}
-
-.mobile-menu ul li {
-  display: block;
-  float: none;
-  text-align: left;
-  border-top: 1px solid #fff;
-  position: relative;
-}
-
-.mobile-menu ul li a {
-  padding: 8px 20px;
-  display: block;
-}
-
-.mobile-menu > span.menu {
-  display: inline-block;
-  width: 38px;
-  height: 38px;
-  background: url(../../images/menu.svg) center no-repeat;
-  cursor: pointer;
-}
-
-@media all and (min-width: 406px) {
+@media all and (min-width: 837px) {
   .mobile-menu {
     display: none;
   }
-  .user-email.mobile {
-    display: none;
+
+  nav > ul {
+    display: block;
   }
 }

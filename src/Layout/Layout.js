@@ -4,7 +4,7 @@ import Header from './Header/Header';
 import Footer from './Footer/Footer';
 import { connect } from 'react-redux';
 import { closeFindBookDropdown } from '../store/actions/findBookDropdown';
-import { cartIncr, cartEmpty } from '../store/actions/cartStatus';
+import { cartContents } from '../store/actions/cartStatus';
 import './Layout.css';
 
 const Layout = (props) => {
@@ -16,8 +16,7 @@ const Layout = (props) => {
 
   useEffect(() => {
     const cart = JSON.parse(localStorage.cart);
-    props.cartEmpty();
-    props.cartIncr(cart.length);
+    props.cartContents(cart.length);
   });
 
   const closeDropdowns = (e) => {
@@ -43,6 +42,4 @@ const Layout = (props) => {
   );
 };
 
-export default connect(null, { closeFindBookDropdown, cartIncr, cartEmpty })(
-  Layout
-);
+export default connect(null, { closeFindBookDropdown, cartContents })(Layout);

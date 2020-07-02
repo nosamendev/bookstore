@@ -1,0 +1,34 @@
+.my-orders .order {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #f1f1f1;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.my-orders .order .date {
+  position: absolute;
+  display: inline-block;
+  color: #8bb93f;
+  font-weight: bold;
+  font-size: 130%;
+  left: 15px;
+  top: 10px;
+}
+
+.my-orders .order .book-container {
+  margin-top: 40px;
+  margin-bottom: 30px;
+  background-color: #fff;
+  width: auto;
+}
+
+.my-orders .order .book-container .action .actions,
+.my-orders .order .book-container .action .cart,
+.my-orders .order .book-container .action .delete-from-cart {
+  display: none;
+}
+
+.my-orders .order .book-container .book-info {
+  padding: 0 0 20px 0;
+}

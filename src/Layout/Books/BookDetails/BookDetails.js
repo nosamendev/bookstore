@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchBook, openModal, cartIncr } from '../../../store/actions';
+import { fetchBook, openModal, cartContents } from '../../../store/actions';
 import Loader from '../../Loader/Loader';
 import Modal from '../../Modal/Modal';
 import Confirm from '../../Modal/ModalDialogs/Confirm';
@@ -71,7 +71,7 @@ const BookDetails = (props) => {
     };
     cart.push(book);
     localStorage.cart = JSON.stringify(cart);
-    props.cartIncr(1);
+    props.cartContents(cart.length);
     props.openModal();
   };
 
@@ -155,6 +155,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchBook, openModal, cartIncr })(
+export default connect(mapStateToProps, { fetchBook, openModal, cartContents })(
   BookDetails
 );

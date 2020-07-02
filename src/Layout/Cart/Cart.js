@@ -1,10 +1,11 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { connect } from 'react-redux';
 import {
   openModal,
   closeModal,
   saveOrder,
-  cartEmpty,
+  saveSuccess,
+  cartContents,
 } from '../../store/actions';
 import Book from '../Books/Book/Book';
 import Modal from '../Modal/Modal';
@@ -14,7 +15,6 @@ import './Cart.css';
 
 const Cart = (props) => {
   const [cartState, setCartState] = useState(JSON.parse(localStorage.cart));
-
   const changeCartFunc = (cart) => {
     setCartState(cart);
   };
@@ -64,11 +64,12 @@ const Cart = (props) => {
     return items;
   };
 
-  const orderHandler = () => {
+  const orderHandler = (e) => {
+    e.preventDefault();
     const cart = JSON.parse(localStorage.cart);
 
     const order = {
-      customer: localStorage.email,
+      email: localStorage.email,
       books: cart,
       userId: props.userId,
       date: new Date().toLocaleDateString(),
@@ -78,7 +79,7 @@ const Cart = (props) => {
     props.openModal();
     if (props.error) {
       localStorage.cart = JSON.stringify([]);
-      props.cartEmpty();
+      props.cartContents(localStorage.cart.length);
     }
   };
 
@@ -86,7 +87,16 @@ const Cart = (props) => {
   let msg = '';
 
   if (!props.success) {
-    orderBtn = <button onClick={orderHandler}>Order</button>;
+    orderBtn = (
+      <button
+        type="submit"
+        onClick={(e) => {
+          orderHandler(e);
+        }}
+      >
+        Order
+      </button>
+    );
   } else {
     msg = <p>No books in the cart.</p>;
   }
@@ -121,11 +131,11 @@ const Cart = (props) => {
   if (props.success) {
     orderSavedMsg = <Confirm title="Your order has been saved." />;
     localStorage.cart = JSON.stringify([]);
-    props.cartEmpty();
+    props.cartContents(0);
   }
 
   return (
-    <>
+    <form>
       <div className="cart-contents">
         <h3>Shopping Cart</h3>
         <div className="category-container">{displayCartItems()}</div>
@@ -135,7 +145,7 @@ const Cart = (props) => {
       {loginMsg}
       {errMsg}
       <Modal>{orderSavedMsg}</Modal>
-    </>
+    </form>
   );
 };
 
@@ -153,5 +163,6 @@ export default connect(mapStateToProps, {
   openModal,
   closeModal,
   saveOrder,
-  cartEmpty,
+  saveSuccess,
+  cartContents,
 })(Cart);

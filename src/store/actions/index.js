@@ -21,8 +21,10 @@ export {
   authCheckState,
 } from './auth.js';
 
-export { cartIncr, cartDecr, cartEmpty } from './cartStatus';
+export { cartContents } from './cartStatus';
 
 export { openModal, closeModal } from './modal.js';
 
-export { saveOrder } from './saveOrder';
+export { saveOrder, saveSuccess } from './saveOrder';
+
+export { fetchMyOrders, fetchMyOrdersFailed } from './fetchMyOrders';

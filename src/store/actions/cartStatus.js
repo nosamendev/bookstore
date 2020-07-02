@@ -1,22 +1,8 @@
-import { CART_INCREASE, CART_DECREASE, CART_EMPTY } from '../actions/types';
+import { CART_CONTENTS } from '../actions/types';
 
-export const cartIncr = (n) => {
+export const cartContents = (n) => {
   return {
-    type: CART_INCREASE,
+    type: CART_CONTENTS,
     payload: n,
-  };
-};
-
-export const cartDecr = (n) => {
-  return {
-    type: CART_DECREASE,
-    payload: n,
-  };
-};
-
-export const cartEmpty = () => {
-  return {
-    type: CART_EMPTY,
-    payload: 0,
   };
 };

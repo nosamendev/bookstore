@@ -64,54 +64,53 @@ const Navigation = (props) => {
         {props.isAuthenticated ? (
           <span className="user-email mobile">{localStorage.email}</span>
         ) : null}
-
-        <div className="mobile-menu">
-          <span className="menu"></span>
-
-          <ul>
-            <li>
-              <NavLink exact to="/">
-                HOME
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/about">ABOUT</NavLink>
-            </li>
-            {props.isAuthenticated ? (
-              <>
-                <li>
-                  <NavLink exact to="/myorders">
-                    MY ORDERS
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink exact to="/manage">
-                    MANAGE
-                  </NavLink>
-                </li>
-              </>
-            ) : null}
-            {!props.isAuthenticated ? (
-              <li>
-                <NavLink exact to="/auth">
-                  AUTH
-                </NavLink>
-              </li>
-            ) : (
-              <li>
-                <NavLink exact to="/logout">
-                  LOGOUT
-                </NavLink>
-              </li>
-            )}
-            <li>
-              <NavLink className="cart" to="/cart">
-                CART<span></span>
-              </NavLink>
-            </li>
-          </ul>
-        </div>
       </ul>
+      <div className="mobile-menu">
+        <span className="menu"></span>
+
+        <ul>
+          <li>
+            <NavLink exact to="/">
+              BOOKS
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/about">ABOUT</NavLink>
+          </li>
+          {props.isAuthenticated ? (
+            <>
+              <li>
+                <NavLink exact to="/myorders">
+                  MY ORDERS
+                </NavLink>
+              </li>
+              <li>
+                <NavLink exact to="/manage">
+                  MANAGE
+                </NavLink>
+              </li>
+            </>
+          ) : null}
+          {!props.isAuthenticated ? (
+            <li>
+              <NavLink exact to="/auth">
+                AUTH
+              </NavLink>
+            </li>
+          ) : (
+            <li>
+              <NavLink exact to="/logout">
+                LOGOUT
+              </NavLink>
+            </li>
+          )}
+          <li>
+            <NavLink className="cart" to="/cart">
+              CART<span ref={cartRef}>(0)</span>
+            </NavLink>
+          </li>
+        </ul>
+      </div>
     </nav>
   );
 };

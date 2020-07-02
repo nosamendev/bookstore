@@ -37,10 +37,6 @@
   float: left;
 }
 
-.find-book-container button {
-  margin: 0 20px 0 0;
-}
-
 .find-book-container form .close {
   display: inline-block;
   width: 11px;
@@ -50,4 +46,23 @@
   right: 20px;
   top: 1px;
   cursor: pointer;
+}
+
+@media all and (max-width: 699px) {
+  .find-book-container button {
+    margin: 10px;
+  }
+
+  .add-book-container {
+    border-left: 0;
+    float: left;
+    padding-left: 0;
+    margin-top: 10px;
+  }
+}
+
+@media all and (min-width: 700px) {
+  .find-book-container button {
+    margin: 0 20px 0 0;
+  }
 }

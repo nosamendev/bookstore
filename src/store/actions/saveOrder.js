@@ -1,4 +1,9 @@
-import { SAVE_ORDER_START, SAVE_ORDER, SAVE_ORDER_FAILED } from './types';
+import {
+  SAVE_ORDER_START,
+  SAVE_ORDER,
+  SAVE_ORDER_FAILED,
+  SAVE_SUCCESS,
+} from './types';
 import books from '../../api/books';
 
 export const saveOrder = (order, token) => async (dispatch) => {
@@ -10,4 +15,11 @@ export const saveOrder = (order, token) => async (dispatch) => {
   } catch (error) {
     dispatch({ type: SAVE_ORDER_FAILED, payload: error });
   }
+};
+
+export const saveSuccess = (bool) => {
+  return {
+    type: SAVE_SUCCESS,
+    payload: bool,
+  };
 };

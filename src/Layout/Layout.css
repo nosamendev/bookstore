@@ -154,19 +154,6 @@ button:active {
   color: red;
 }
 
-input[type='email'],
-input[type='password'],
-input[type='text'],
-input[type='number'],
-select {
-  width: 300px;
-  background-color: #fff;
-  border: 1px solid #b9bdbf;
-  height: 35px;
-  padding: 5px;
-  outline: 0;
-}
-
 input:focus,
 textarea:focus {
   box-shadow: 0 0 10px 0 rgba(113, 113, 113, 0.4);
@@ -196,4 +183,36 @@ hr {
   border-top: 2px dotted #acacac;
   border-bottom: 0;
   margin: 20px 0;
+}
+
+input[type='email'],
+input[type='password'],
+input[type='text'],
+input[type='number'],
+select {
+  background-color: #fff;
+  border: 1px solid #b9bdbf;
+  height: 35px;
+  padding: 5px;
+  outline: 0;
+}
+
+@media all and (max-width: 490px) {
+  input[type='email'],
+  input[type='password'],
+  input[type='text'],
+  input[type='number'],
+  select {
+    width: 190px;
+  }
+}
+
+@media all and (min-width: 491px) {
+  input[type='email'],
+  input[type='password'],
+  input[type='text'],
+  input[type='number'],
+  select {
+    width: 300px;
+  }
 }

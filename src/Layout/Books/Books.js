@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { fetchBooks, searchStopped } from '../../store/actions';
+import { fetchBooks, searchStopped, saveSuccess } from '../../store/actions';
 import Loader from '../Loader/Loader';
 import FindBook from '../FindBook/FindBook';
 import DisplayBooks from '../DisplayBooks/DisplayBooks';
@@ -17,6 +17,10 @@ const Books = (props) => {
       props.searchStopped();
     };
   }, []);
+
+  useEffect(() => {
+    props.saveSuccess(false);
+  });
 
   const inputRefFunc = (node) => {
     node.focus();
@@ -71,4 +75,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchBooks, searchStopped })(Books);
+export default connect(mapStateToProps, {
+  fetchBooks,
+  searchStopped,
+  saveSuccess,
+})(Books);
