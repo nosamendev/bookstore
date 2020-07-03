@@ -160,7 +160,6 @@ textarea:focus {
 }
 
 textarea {
-  width: 300px;
   background-color: #fff;
   border: 1px solid #b9bdbf;
   height: 100px;
@@ -197,22 +196,24 @@ select {
   outline: 0;
 }
 
-@media all and (max-width: 490px) {
+@media all and (max-width: 768px) {
   input[type='email'],
   input[type='password'],
   input[type='text'],
   input[type='number'],
-  select {
+  select,
+  textarea {
     width: 190px;
   }
 }
 
-@media all and (min-width: 491px) {
+@media all and (min-width: 769px) {
   input[type='email'],
   input[type='password'],
   input[type='text'],
   input[type='number'],
-  select {
+  select,
+  textarea {
     width: 300px;
   }
 }

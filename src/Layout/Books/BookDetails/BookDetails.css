@@ -1,6 +1,7 @@
 .book-details {
   display: flex;
   display: -webkit-flex;
+  flex-wrap: wrap;
   margin-top: 30px;
 }
 
@@ -21,11 +22,6 @@
   position: relative;
   border: 20px solid #f1f1f1;
   border-radius: 10px;
-}
-
-.book-details .book-info {
-  margin-top: 30px;
-  margin-left: 50px;
 }
 
 .book-details .book-info table {
@@ -87,4 +83,44 @@
   margin: 0;
   cursor: pointer;
   background: #fff url(../../../images/cart.png) center no-repeat;
+}
+
+@media all and (max-width: 430px) {
+  .book-details .book-info {
+    margin-left: 0;
+    margin-top: 0;
+  }
+}
+
+@media all and (min-width: 431px) {
+  .book-details .book-info {
+    margin-top: 30px;
+    margin-left: 50px;
+  }
+}
+@media all and (max-width: 768px) {
+  .book-details .book-info table .price input {
+    width: 180px;
+  }
+}
+
+@media all and (min-width: 769px) {
+  .book-details {
+    flex-wrap: nowrap;
+  }
+
+  .book-details .book-info {
+    margin-left: 0;
+    margin-top: 0;
+  }
+
+  .book-details .book-info table .price input {
+    width: 190px;
+  }
+
+  @media all and (min-width: 836px) {
+    .book-details .book-info table .price input {
+      width: 290px;
+    }
+  }
 }

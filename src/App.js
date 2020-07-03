@@ -24,11 +24,11 @@ const App = (props) => {
     //not authenticated:
     <Switch>
       <Route path="/cart" exact component={Cart} />
-      <Route path="/" exact component={Books} />
+
       <Route path="/about" exact component={About} />
       <Route path="/books/:id" exact component={BookDetails} />
       <Route path="/auth" exact component={Auth} />
-
+      <Route path="/" component={Books} />
       <Route render={() => <h1>(404) This file cannot be found</h1>} />
     </Switch>
   );
@@ -37,7 +37,7 @@ const App = (props) => {
     routes = (
       <Switch>
         <Route path="/cart" exact component={Cart} />
-        <Route path="/" exact component={Books} />
+
         <Route path="/about" exact component={About} />
         <Route path="/books/:id" exact component={BookDetails} />
         <Route path="/manage" exact component={Manage} />
@@ -48,7 +48,7 @@ const App = (props) => {
         <Route path="delete" exact component={Delete} />
         <Route path="/auth" exact component={Auth} />
         <Route path="/logout" exact component={Logout} />
-
+        <Route path="/" component={Books} />
         <Route render={() => <h1>(404) This file cannot be found</h1>} />
       </Switch>
     );
