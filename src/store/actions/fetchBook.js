@@ -6,15 +6,12 @@ import {
 
 import books from '../../api/books';
 
-export const fetchBook = (id) => async (dispatch) => {
-  dispatch({ type: FETCH_BOOK_START });
+export const fetchBookStart = () => {
+  return { type: FETCH_BOOK_START };
+};
 
-  try {
-    const response = await books.get(`/store/books/${id}.json`);
-    dispatch({ type: FETCH_BOOK, payload: response.data, id: id });
-  } catch (error) {
-    dispatch({ type: FETCH_BOOK_FAILED, payload: error });
-  }
+export const fetchBookSuccess = (id, response) => {
+  return { type: FETCH_BOOK, payload: response.data, id: id };
 };
 
 export const fetchBookFailed = (error) => {
@@ -22,4 +19,14 @@ export const fetchBookFailed = (error) => {
     type: FETCH_BOOK_FAILED,
     payload: error,
   };
+};
+
+export const fetchBook = (id) => async (dispatch) => {
+  dispatch(fetchBookStart());
+  try {
+    const response = await books.get(`/store/books/${id}.json`);
+    dispatch(fetchBookSuccess(id, response));
+  } catch (error) {
+    dispatch(fetchBookFailed(error));
+  }
 };

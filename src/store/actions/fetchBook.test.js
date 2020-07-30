@@ -2,6 +2,11 @@ import moxios from 'moxios';
 import { storeFactory } from '../../test/testUtils';
 import { fetchBook, fetchBookFailed } from './fetchBook';
 import books from '../../api/books';
+import {
+  FETCH_BOOK_START,
+  FETCH_BOOK,
+  FETCH_BOOK_FAILED,
+} from '../actions/types';
 
 describe('Testing fetchBook action creator', () => {
   beforeEach(() => {

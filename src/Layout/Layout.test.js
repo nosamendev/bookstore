@@ -4,9 +4,9 @@ import { storeFactory } from '../test/testUtils';
 import { findByTestAttr } from '../test/testUtils';
 import Layout from './Layout';
 
-const setup = (state = {}) => {
+const setup = (state = {}, props) => {
   const store = storeFactory(state);
-  const wrapper = shallow(<Layout store={store} />);
+  const wrapper = shallow(<Layout store={store} {...props} />);
   //console.log(wrapper.debug());
   return wrapper;
 };
@@ -34,10 +34,24 @@ test('`cartContents` action creator runs on Layout mount', () => {
   const cartContentsMock = jest.fn();
 
   const wrapper = setup();
-  console.log(wrapper.debug());
+  //console.log(wrapper.debug());
 
   wrapper.setProps();
   const cartContentsCallCount = cartContentsMock.mock.calls.length;
 
   expect(cartContentsCallCount).toBe(1);
+});
+
+test('tests if all dropdowns close on `wrapper` click', () => {
+  const closeFindBookDropdownMock = jest.fn();
+  const props = { closeFindBookDropdown: closeFindBookDropdownMock };
+
+  const wrapper = setup({}, props).dive();
+  const componentWrapper = findByTestAttr(wrapper, 'component-wrapper');
+  console.log(componentWrapper);
+  componentWrapper.simulate('click');
+
+  const closeFindBookDropdownCallCount =
+    closeFindBookDropdownMock.mock.calls.length;
+  expect(closeFindBookDropdownCallCount).toBe(1);
 });
