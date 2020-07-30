@@ -16,6 +16,7 @@ const bookReducer = (state = INITIAL_STATE, action) => {
       const book = Object.values(action.payload);
       const id = Object.keys(action.payload);
       book.id = id;
+      //console.log(action.payload);
 
       return { ...state, ...action.payload, loading: false };
     case FETCH_BOOK_START:

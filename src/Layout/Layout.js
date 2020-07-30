@@ -32,7 +32,7 @@ const Layout = (props) => {
   return (
     <React.Fragment>
       <BrowserRouter>
-        <div id="wrapper" ref={wrapperRef}>
+        <div id="wrapper" ref={wrapperRef} data-test="component-wrapper">
           <Header />
           <main>{props.children}</main>
           <Footer />
