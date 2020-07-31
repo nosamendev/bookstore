@@ -31,7 +31,7 @@ test('`closeFindBookDropdown` action creator is a function on the props', () => 
   expect(closeFindBookDropdownProp).toBeInstanceOf(Function);
 });
 
-test('`cartContents` action creator runs on Layout mount', () => {
+test('Test1: `cartContents` action creator runs on Layout mount', () => {
   const cartContentsMock = jest.fn();
 
   const setup = () => {
@@ -44,7 +44,7 @@ test('`cartContents` action creator runs on Layout mount', () => {
   expect(cartContentsMock).toHaveBeenCalled();
 });
 
-test('tests if all dropdowns close on `wrapper` click', () => {
+test('Test2: tests if all dropdowns close on `wrapper` click', () => {
   const closeFindBookDropdownMock = jest.fn();
   const props = { closeFindBookDropdown: closeFindBookDropdownMock };
 
