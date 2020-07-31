@@ -1,8 +1,9 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { storeFactory } from '../test/testUtils';
 import { findByTestAttr } from '../test/testUtils';
-import Layout from './Layout';
+import Layout, { UnconnectedLayout } from './Layout';
+import cartContents from '../store/actions';
 
 const setup = (state = {}, props) => {
   const store = storeFactory(state);
@@ -33,22 +34,23 @@ test('`closeFindBookDropdown` action creator is a function on the props', () => 
 test('`cartContents` action creator runs on Layout mount', () => {
   const cartContentsMock = jest.fn();
 
-  const wrapper = setup();
-  //console.log(wrapper.debug());
+  const setup = () => {
+    cartContentsMock.mockClear();
+    cartContents = cartContentsMock; // read-only?
+    return mount(<App />);
+  };
 
-  wrapper.setProps();
-  const cartContentsCallCount = cartContentsMock.mock.calls.length;
-
-  expect(cartContentsCallCount).toBe(1);
+  setup();
+  expect(cartContentsMock).toHaveBeenCalled();
 });
 
 test('tests if all dropdowns close on `wrapper` click', () => {
   const closeFindBookDropdownMock = jest.fn();
   const props = { closeFindBookDropdown: closeFindBookDropdownMock };
 
-  const wrapper = setup({}, props).dive();
+  const wrapper = shallow(<UnconnectedLayout {...props} />);
   const componentWrapper = findByTestAttr(wrapper, 'component-wrapper');
-  console.log(componentWrapper);
+  //console.log(componentWrapper);
   componentWrapper.simulate('click');
 
   const closeFindBookDropdownCallCount =

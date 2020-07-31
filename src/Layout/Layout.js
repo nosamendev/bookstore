@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
@@ -7,14 +7,14 @@ import { closeFindBookDropdown } from '../store/actions/findBookDropdown';
 import { cartContents } from '../store/actions/cartStatus';
 import './Layout.css';
 
-const Layout = (props) => {
-  const wrapperRef = useCallback((node) => {
+export const UnconnectedLayout = (props) => {
+  const wrapperRef = React.useCallback((node) => {
     if (node) {
       node.addEventListener('click', closeDropdowns);
     }
   });
 
-  useEffect(() => {
+  React.useEffect(() => {
     const cart = JSON.parse(localStorage.cart);
     props.cartContents(cart.length);
   });
@@ -42,4 +42,6 @@ const Layout = (props) => {
   );
 };
 
-export default connect(null, { closeFindBookDropdown, cartContents })(Layout);
+export default connect(null, { closeFindBookDropdown, cartContents })(
+  UnconnectedLayout
+);
